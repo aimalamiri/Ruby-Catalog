@@ -14,9 +14,16 @@ class Item
     @archived = false
   end
 
+  def move_to_archived?
+    @archived = true if can_be_archived?
+  end
+
+  private
+
   def can_be_archived?
     now = Date.today
     difference_in_years = ((now - @publish_date)).to_i
-    (difference_in_years / 365).to_i
+    should_be_archived = (difference_in_years / 365).to_i
+    should_be_archived ? true : false
   end
 end
