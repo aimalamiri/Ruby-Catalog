@@ -1,4 +1,3 @@
-require_relative './app'
 require 'securerandom'
 
 class Author
