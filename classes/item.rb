@@ -23,7 +23,7 @@ class Item
 
   def can_be_archived?
     now = Date.today
-    difference_in_years = ((now - @publish_date)).to_i
+    difference_in_years = ((now - Date.parse(@publish_date))).to_i
     should_be_archived = (difference_in_years / 365).to_i
     should_be_archived > 10
   end

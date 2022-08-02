@@ -2,7 +2,7 @@ require_relative './spec_helper'
 
 describe MusicAlbum do
   context 'When testing the MusicAlbum class' do
-    publish_date = '22/02/2022'
+    publish_date = '22/02/2001'
     music_album = MusicAlbum.new('Thugs', publish_date, true)
 
     it 'music_album should be an instance of MusicAlbum' do
