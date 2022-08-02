@@ -1,5 +1,4 @@
 require 'securerandom'
-require 'Time'
 
 class Item
   attr_accessor :genre, :author, :label, :source, :publish_date
