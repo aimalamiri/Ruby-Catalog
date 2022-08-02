@@ -24,6 +24,6 @@ class Item
     now = Date.today
     difference_in_years = ((now - @publish_date)).to_i
     should_be_archived = (difference_in_years / 365).to_i
-    should_be_archived >= 10
+    should_be_archived > 10
   end
 end
