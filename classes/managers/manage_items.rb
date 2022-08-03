@@ -31,7 +31,7 @@ class ManageItems
   def add_book
     print 'On which date this book is published? please provide in (dd/mm/yyyy) format: '
     publish_date = gets.chomp.to_s
-    print 'Who is the publihser? '
+    print 'Who is the publisher? '
     publisher = gets.chomp.to_s
     print 'How is the cover state now? '
     cover_state = gets.chomp.to_s

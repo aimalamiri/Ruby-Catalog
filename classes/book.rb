@@ -5,7 +5,7 @@ class Book < Item
 
   def initialize(publish_date, publisher, cover_state)
     super(publish_date)
-    @publiser = publisher
+    @publisher = publisher
     @cover_state = cover_state
   end
 
