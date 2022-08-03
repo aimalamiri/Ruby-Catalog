@@ -8,7 +8,7 @@ describe Author do
     it 'Should be instance of the Author class' do
       expect(@author).to be_instance_of Author
     end
-    it 'Should have the name equal to Anthony' do
+    it 'Should have the firstname equal to Anthony' do
       expect(@author.firstname).to eq 'Anthony'
     end
     item = Item.new('2022-08-03')
