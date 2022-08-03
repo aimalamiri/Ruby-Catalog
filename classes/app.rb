@@ -1,9 +1,13 @@
 require_relative './managers/manage_items'
+require_relative './managers/manage_labels'
 
 class App
   def initialize
     @items = []
+    @labels = []
+
     @manage_items = ManageItems.new(@items)
+    @manage_labels = ManageLabels.new(@labels)
   end
 
   def run
@@ -21,7 +25,8 @@ class App
 
   def execute_action
     {
-      1 => [@manage_items, 'list_items'], 6 => [@manage_items, 'add_item']
+      1 => [@manage_items, 'list_items'], 4 => [@manage_labels, 'list_labels'], 6 => [@manage_items, 'add_item'],
+      9 => [@manage_labels, 'add_label']
     }
   end
 
