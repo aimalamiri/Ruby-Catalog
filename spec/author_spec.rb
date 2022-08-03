@@ -11,8 +11,9 @@ describe Author do
     it 'Should have the firstname equal to Anthony' do
       expect(@author.firstname).to eq 'Anthony'
     end
-    item = Item.new('2022-08-03')
-    it 'Should add 1 author item to the collection' do
+
+    it 'Should add 1 item of game info to items collection' do
+      item = Game.new('2012-08-03', 'Y', '2015-08-07')
       @author.add_item(item)
       expect(@author.items.length).to eq 1
     end
