@@ -19,8 +19,15 @@ class App
       9 => 'Add new label', 10 => 'Add new music album', 0 => 'Exit' }
   end
 
+  def execute_action
+    {
+      1 => [@manage_items, 'list_items'], 6 => [@manage_items, 'add_item']
+    }
+  end
+
   def action(action)
-    @manage_items.add_item if action == 7
-    puts list_of_options[action]
+    exit if action.zero?
+    execute_action[action][0].send(execute_action[action][1])
+    run
   end
 end
