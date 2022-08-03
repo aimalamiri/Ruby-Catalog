@@ -5,13 +5,27 @@ class ManageItems
     @items = items
   end
 
-  def add_item
+  def carry_out(action)
     types = { 1 => 'Book', 2 => 'Game', 3 => 'Music Album' }
-    puts 'Which item do you want to add? Chose by number'
+    puts "What do you want to #{action}? Chose by number"
     types.each { |key, value| puts "#{key} - #{value}" }
     choice = gets.chomp.to_i
     method_from_type = types[choice].downcase.split.join('_')
-    send("add_#{method_from_type}")
+    send("#{action}_#{method_from_type}")
+  end
+
+  def list_items
+    carry_out('list')
+  end
+
+  def add_item
+    carry_out('add')
+  end
+
+  def list_book
+    @items.each do |item|
+      puts "#{item.class} - published at #{item.publish_date} by #{item.publisher} and the cover is #{item.cover_state}"
+    end
   end
 
   def add_book
