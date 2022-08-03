@@ -13,8 +13,8 @@ describe Author do
     end
     item = Item.new('2022-08-03')
     it 'Should add 1 author item to the collection' do
-        @author.add_item(item)
-        expect(@author.items.length).to eq 1
+      @author.add_item(item)
+      expect(@author.items.length).to eq 1
     end
   end
 end
