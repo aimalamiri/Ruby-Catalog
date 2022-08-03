@@ -1,4 +1,11 @@
+require_relative './managers/manage_items'
+
 class App
+  def initialize
+    @items = []
+    @manage_items = ManageItems.new(@items)
+  end
+
   def run
     list_of_options.each { |key, value| puts "#{key} - #{value}" }
     puts 'Choose an option by number: '
@@ -13,6 +20,7 @@ class App
   end
 
   def action(action)
+    @manage_items.add_item if action == 7
     puts list_of_options[action]
   end
 end

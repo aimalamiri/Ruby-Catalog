@@ -9,7 +9,7 @@ class ManageItems
     types.each { |key, value| puts "#{key} - #{value}" }
     choice = gets.chomp.to_i
     method_from_type = types[choice].downcase.split.join('_')
-    send(method_from_type)
+    send("add_#{method_from_type}")
   end
 
   def add_book
