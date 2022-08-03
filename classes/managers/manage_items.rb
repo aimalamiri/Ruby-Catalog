@@ -1,3 +1,5 @@
+require_relative '../book'
+
 class ManageItems
   def initialize(items = [])
     @items = items
@@ -13,6 +15,15 @@ class ManageItems
   end
 
   def add_book
-    puts 'We can create a book for you! Yay!!!!!!!!'
+    print 'On which date this book is published? please provide in (dd/mm/yyyy) format: '
+    publish_date = gets.chomp.to_s
+    print 'Who is the publihser? '
+    publisher = gets.chomp.to_s
+    print 'How is the cover state now? '
+    cover_state = gets.chomp.to_s
+    book = Book.new(publish_date, publisher, cover_state)
+    @items << book
+
+    puts 'The book has been added successfully!'
   end
 end
