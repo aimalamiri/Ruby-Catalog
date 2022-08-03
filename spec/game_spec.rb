@@ -10,11 +10,11 @@ describe Game do
       expect(@game).to be_instance_of Game
     end
 
-    it 'Should return true as the game is a multiplayer' do
+    it 'Should return Y as the game is a multiplayer' do
       expect(@game.multiplayer).to eq 'Y'
     end
 
-    it 'Should add one game to the collection' do
+    it 'Should have the game last_played_date to equal 2014-05-12' do
       expect(@game.last_played_at).to eq '2014-05-12'
     end
 
