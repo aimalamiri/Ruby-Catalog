@@ -1,4 +1,5 @@
 require_relative './item'
+require 'date'
 
 class Game < Item
   attr_accessor :multiplayer, :last_played_at
@@ -7,5 +8,11 @@ class Game < Item
     super(publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
+  end
+
+  def can_be_archived?
+    game_date = DateTime.parse(@last_played_at).to_date
+    years = (Date.today.year - game_date.year) > 2
+    super && years
   end
 end
