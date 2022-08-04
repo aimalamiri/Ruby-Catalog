@@ -29,25 +29,15 @@ class ManageItems
   end
 
   def list_book
-    count = 0
     @items.each do |item|
-      next unless item.instance_of?(Book)
-
-      count += 1
-      puts item.print_list
+      puts "#{item.class} - #{item.publisher} published at #{item.publish_date} and the cover is #{item.cover_state}"
     end
-    puts 'No Books available!' if count < 1
   end
 
   def list_music_album
-    count = 0
     @items.each do |item|
-      next unless item.instance_of?(MusicAlbum)
-
-      count += 1
-      puts item.print_list
+      puts "#{item.class} - published at #{item.publish_date} by #{item.name}"
     end
-    puts 'No Music Albums available!' if count < 1
   end
 
   def add_book
@@ -60,7 +50,6 @@ class ManageItems
     book = Book.new(publish_date, publisher, cover_state)
     @items << book
     @file_writer.write_data(book)
-
     puts 'The book has been added successfully!'
   end
 
@@ -74,6 +63,7 @@ class ManageItems
     if %w[y n].include?(on_spotify)
       music_album = MusicAlbum.new(name, publish_date, on_spotify == 'y')
       @items << music_album
+      @file_writer.write_data(music_album)
       puts 'The Music album has been added successfully!'
     else
       puts 'Choose the correct option!'

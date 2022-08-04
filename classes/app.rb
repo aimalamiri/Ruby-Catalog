@@ -5,10 +5,11 @@ require_relative './managers/manage_genres'
 class App
   def initialize
     @items = []
+    @labels = []
 
     @manage_items = ManageItems.new(@items)
-    @manage_labels = ManageLabels.new(@items)
-    @manage_genres = ManageGenres.new(@items)
+    @manage_labels = ManageLabels.new(@labels)
+    @manage_genres = ManageGenres.new(@labels)
   end
 
   def run

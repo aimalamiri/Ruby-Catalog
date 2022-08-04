@@ -1,9 +1,12 @@
 require 'securerandom'
 require_relative './item'
+require_relative '../modules/jsonable'
 
 class Genre
   attr_accessor :name
   attr_reader :id, :items
+
+  include JSONable
 
   def initialize(name)
     @id = SecureRandom.uuid
