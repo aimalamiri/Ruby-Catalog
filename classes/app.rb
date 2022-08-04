@@ -1,6 +1,7 @@
 require_relative './managers/manage_items'
 require_relative './managers/manage_labels'
 require_relative './managers/manage_genres'
+require_relative './managers/manage_authors'
 
 class App
   def initialize
@@ -9,6 +10,7 @@ class App
     @manage_items = ManageItems.new(@items)
     @manage_labels = ManageLabels.new(@items)
     @manage_genres = ManageGenres.new(@items)
+    @manage_authors = ManageAuthors.new(@items)
   end
 
   def run
@@ -28,9 +30,9 @@ class App
 
   def execute_action
     {
-      1 => [@manage_items,
-            'list_items'], 3 => [@manage_genres, 'list_genres'],
-      4 => [@manage_labels, 'list_labels'], 5 => [@manage_items, 'add_item'],
+      1 => [@manage_items, 'list_items'], 2 => [@manage_authors, 'list_authors'],
+      3 => [@manage_genres, 'list_genres'], 4 => [@manage_labels, 'list_labels'],
+      5 => [@manage_items, 'add_item'], 6 => [@manage_authors, 'add_authors'],
       7 => [@manage_genres, 'add_genre'], 8 => [@manage_labels, 'add_label']
     }
   end
