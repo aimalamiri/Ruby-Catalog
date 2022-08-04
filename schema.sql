@@ -23,7 +23,7 @@ CREATE TABLE books (
 
 CREATE TABLE geners(
   id SERIAL PRIMARY KEY,
-  name VARCHAR,
+  name VARCHAR
 );
 
 
@@ -39,5 +39,5 @@ CREATE TABLE music_albums (
   CONSTRAINT fk_genre_id FORIEGN KEY (genre_id) REFERENCES genres(id),
   CONSTRAINT fk_author_id FORIEGN KEY (author_id) REFERENCES authors(id),
   CONSTRAINT fk_source_id FORIEGN KEY (source_id) REFERENCES sources(id),
-  CONSTRAINT fk_label_id FORIEGN KEY (label_id) REFERENCES labels(id),
+  CONSTRAINT fk_label_id FORIEGN KEY (label_id) REFERENCES labels(id)
 );
