@@ -31,13 +31,15 @@ class ManageItems
 
   def list_book
     @items.each do |item|
-      puts "#{item.class} - #{item.publisher} published at #{item.publish_date} and the cover is #{item.cover_state}"
+      if item.instance_of?(Book)
+        puts "#{item.class} - #{item.publisher} published at #{item.publish_date} and the cover is #{item.cover_state}"
+      end
     end
   end
 
   def list_music_album
     @items.each do |item|
-      puts "#{item.class} - published at #{item.publish_date} by #{item.name}"
+      puts "#{item.class} - published at #{item.publish_date} by #{item.name}" if item.instance_of?(MusicAlbum)
     end
   end
 
