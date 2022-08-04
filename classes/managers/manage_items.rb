@@ -1,9 +1,11 @@
 require_relative '../book'
 require_relative '../music_album'
+require_relative '../io/file_writer'
 
 class ManageItems
   def initialize(items = [])
     @items = items
+    @file_writer = FileWriter.new('items.json')
   end
 
   def carry_out(action)
@@ -49,6 +51,7 @@ class ManageItems
     cover_state = gets.chomp.to_s
     book = Book.new(publish_date, publisher, cover_state)
     @items << book
+    @file_writer.write_data(book)
 
     puts 'The book has been added successfully!'
   end
