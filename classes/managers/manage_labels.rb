@@ -1,8 +1,10 @@
 require_relative '../label'
+require_relative '../io/file_writer'
 
 class ManageLabels
   def initialize(labels)
     @labels = labels
+    @file_writer = FileWriter.new('labels.json')
   end
 
   def list_labels
@@ -19,5 +21,9 @@ class ManageLabels
 
     label = Label.new(title, color)
     @labels << label
+
+    @file_writer.write_data(label)
+
+    puts "The label #{label.title} has been added successfully!"
   end
 end
