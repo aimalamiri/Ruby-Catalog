@@ -6,10 +6,12 @@ require_relative './managers/manage_authors'
 class App
   def initialize
     @items = []
+    @labels = []
+    @genres = []
 
     @manage_items = ManageItems.new(@items)
-    @manage_labels = ManageLabels.new(@items)
-    @manage_genres = ManageGenres.new(@items)
+    @manage_labels = ManageLabels.new(@labels)
+    @manage_genres = ManageGenres.new(@genres)
     @manage_authors = ManageAuthors.new(@items)
   end
 
