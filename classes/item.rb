@@ -1,9 +1,12 @@
 require 'securerandom'
 require 'time'
+require_relative '../modules/jsonable'
 
 class Item
   attr_accessor :genre, :author, :label, :source, :publish_date
   attr_reader :id, :archived
+
+  include JSONable
 
   def initialize(publish_date)
     @id = SecureRandom.uuid
