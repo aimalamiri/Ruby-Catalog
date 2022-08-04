@@ -29,9 +29,14 @@ class ManageItems
   end
 
   def list_book
+    count = 0
     @items.each do |item|
-      puts "#{item.class} - published at #{item.publish_date} by #{item.publisher} and the cover is #{item.cover_state}"
+      next unless item.instance_of?(Book)
+
+      count += 1
+      puts item.print_list
     end
+    puts 'No Books available!' if count < 1
   end
 
   def list_music_album
@@ -40,7 +45,7 @@ class ManageItems
       next unless item.instance_of?(MusicAlbum)
 
       count += 1
-      puts "#{item.name} - published at #{item.publish_date} #{item.on_spotify ? 'on Spotify now.' : ''}"
+      puts item.print_list
     end
     puts 'No Music Albums available!' if count < 1
   end

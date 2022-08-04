@@ -12,4 +12,8 @@ class MusicAlbum < Item
   def can_be_archived?
     super && @on_spotify
   end
+
+  def print_list
+    print "#{self.class} - #{@name} published at #{@publish_date} #{@on_spotify ? 'on Spotify now.' : ''}"
+  end
 end
