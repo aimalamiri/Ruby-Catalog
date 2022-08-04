@@ -1,46 +1,34 @@
 require_relative '../genre'
+require_relative '../io/file_writer'
+require_relative '../io/file_reader'
 
 class ManageGenres
-  def initialize(items)
-    @items = items
+  def initialize(genres)
+    @genres = genres
+    @file_writer = FileWriter.new('genres.json')
+    @file_reader = FileReader.new('genres.json')
   end
 
   def list_genres
-    if @items.length.positive?
-      @items.each_with_index do |item, _index|
-        puts item.print_list
-      end
-      puts ''
-      print 'Select item you want to list genre by order number: '
-      chosen = gets.chomp.to_i
-      list_genres unless chosen.between?(1, @items.length)
-      current_item = @items[chosen - 1]
-      if current_item.genre
-        puts "1. #{current_item.genre.name}"
-      else
-        puts 'No Genre for this item!'
-      end
-    else
-      puts 'Add item first!'
+    load_genres
+    @genres.each do |genre|
+      puts "Genre - #{genre.name}"
     end
   end
 
   def add_genre
-    if @items.length.positive?
-      @items.each_with_index do |item, _index|
-        puts item.print_list
-      end
-      puts ''
-      print 'Select item you want to add genre by order number: '
-      chosen = gets.chomp.to_i
-      list_genres unless chosen.between?(1, @items.length)
-      print 'Please enter the name: '
-      name = gets.chomp.to_s
-      genre = Genre.new(name)
-      genre.add_item(@items[chosen - 1])
-      puts 'Genre added succesfully'
-    else
-      puts 'Add item first!'
-    end
+    print 'Please enter the name: '
+    name = gets.chomp.to_s
+
+    genre = Genre.new(name)
+    @genres << genre
+
+    @file_writer.write_data(genre)
+
+    puts "The Genre #{genre.name} has been added successfully!"
+  end
+
+  def load_genres
+    @genres = @file_reader.read_data
   end
 end
