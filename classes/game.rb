@@ -15,4 +15,8 @@ class Game < Item
     years = (Date.today.year - game_date.year) > 2
     super && years
   end
+
+  def print_list
+    print "\n#{self.class}:|Multiplayer(#{@multiplayer})|Last Palyed: #{@last_played_at}|published: #{@publish_date}\n"
+  end
 end

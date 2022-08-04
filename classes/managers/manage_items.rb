@@ -1,5 +1,6 @@
 require_relative '../book'
 require_relative '../music_album'
+require_relative '../game'
 require_relative '../io/file_writer'
 require_relative '../io/file_reader'
 
@@ -40,6 +41,17 @@ class ManageItems
     end
   end
 
+  def list_game
+    game_count = 0
+    @items.each do |g|
+      break unless g.instance_of?(Game)
+
+      game_count += 1
+      puts g.print_list
+    end
+    puts 'No Game has been added yet❗' if game_count <= 0
+  end
+
   def add_book
     print 'On which date this book is published? please provide in (dd/mm/yyyy) format: '
     publish_date = gets.chomp.to_s
@@ -69,6 +81,19 @@ class ManageItems
       puts 'Choose the correct option!'
       add_music_album
     end
+  end
+
+  def add_game
+    print "\n Enter the date on which the game was published in (dd/mm/yyyy) format:"
+    publish_date = gets.chomp.to_s
+    print "\n Is the game a multiplayer [ Y/N ]: ?"
+    multiplayer = gets.chomp.to_s
+    print "\n Enter date when the game was last played (dd/mm/yyyy) format:"
+    last_played_at = gets.chomp.to_s
+    game = Game.new(publish_date, multiplayer, last_played_at)
+    @items << game
+    @file_writer.write_data(game)
+    puts "\n✅ Game successfully added"
   end
 
   def load_items
