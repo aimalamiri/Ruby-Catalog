@@ -37,7 +37,7 @@ Kindly modify the files as needed.
 - Twitter: [@meaimal](https://twitter.com/meaimal)
 - LinkedIn: [Aimal Amiri](https://linkedin.com/in/aimal-amiri)
 
-👤 **Yasi Warsama**
+👤 **Yasin Warsame**
 
 - GitHub: [@Yazino12](https://github.com/Yazino12)
 - Twitter: [@yasino24](https://twitter.com/yasino24)
