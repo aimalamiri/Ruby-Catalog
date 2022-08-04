@@ -1,12 +1,17 @@
 require_relative '../book'
 require_relative '../music_album'
+require_relative '../io/file_writer'
+require_relative '../io/file_reader'
 
 class ManageItems
   def initialize(items = [])
     @items = items
+    @file_writer = FileWriter.new('items.json')
+    @file_reader = FileReader.new('items.json')
   end
 
   def carry_out(action)
+    load_items
     types = { 1 => 'Book', 2 => 'Game', 3 => 'Music Album' }
     puts "What do you want to #{action}? Chose by number"
     types.each { |key, value| puts "#{key} - #{value}" }
@@ -49,6 +54,7 @@ class ManageItems
     cover_state = gets.chomp.to_s
     book = Book.new(publish_date, publisher, cover_state)
     @items << book
+    @file_writer.write_data(book)
 
     puts 'The book has been added successfully!'
   end
@@ -68,5 +74,9 @@ class ManageItems
       puts 'Choose the correct option!'
       add_music_album
     end
+  end
+
+  def load_items
+    @items = @file_reader.read_data
   end
 end
