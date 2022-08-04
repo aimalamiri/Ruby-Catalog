@@ -7,14 +7,16 @@ class ManageGenres
 
   def list_genres
     if @items.length.positive?
-      @items.each_with_index do |item, index|
-        puts "#{index + 1}: #{item.class} - #{item.name} published #{item.publish_date}"
+      @items.each_with_index do |item, _index|
+        puts item.print_list
       end
-      print 'Select item you want to list genre by number: '
+      puts ''
+      print 'Select item you want to list genre by order number: '
       chosen = gets.chomp.to_i
       list_genres unless chosen.between?(1, @items.length)
-      if @items[chosen - 1].genre
-        puts "1. #{@items[chosen - 1].genre.name}"
+      current_item = @items[chosen - 1]
+      if current_item.genre
+        puts "1. #{current_item.genre.name}"
       else
         puts 'No Genre for this item!'
       end
@@ -25,10 +27,11 @@ class ManageGenres
 
   def add_genre
     if @items.length.positive?
-      @items.each_with_index do |item, index|
-        puts "#{index + 1}: #{item.class} - #{item.name} published #{item.publish_date}"
+      @items.each_with_index do |item, _index|
+        puts item.print_list
       end
-      print 'Select item you want to add genre by number: '
+      puts ''
+      print 'Select item you want to add genre by order number: '
       chosen = gets.chomp.to_i
       list_genres unless chosen.between?(1, @items.length)
       print 'Please enter the name: '
