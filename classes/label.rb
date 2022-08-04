@@ -1,8 +1,11 @@
 require 'securerandom'
+require_relative '../modules/jsonable'
 
 class Label
   attr_accessor :title, :color
   attr_reader :items
+
+  include JSONable
 
   def initialize(title, color)
     @id = SecureRandom.uuid

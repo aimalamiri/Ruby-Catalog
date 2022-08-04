@@ -1,8 +1,12 @@
 require_relative '../label'
+require_relative '../io/file_writer'
+require_relative '../io/file_reader'
 
 class ManageLabels
   def initialize(items)
     @items = items
+    @file_writer = FileWriter.new('labels.json')
+    @file_reader = FileReader.new('labels.json')
   end
 
   def list_labels
@@ -40,9 +44,14 @@ class ManageLabels
       color = gets.chomp.to_s
       label = Label.new(title, color)
       label.add_item(@items[chosen - 1])
+      @file_writer.write_data(label)
       puts 'Label added succesfully'
     else
       puts 'Add item first!'
     end
+  end
+
+  def load_labels
+    @labels = @file_reader.read_data
   end
 end
